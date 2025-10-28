@@ -50,7 +50,7 @@ const CategoryForm = ({ onSuccess }) => {
             className="w-full px-4 py-2 border rounded"
           >
             <option value="ingresos">Ingresos</option>
-            {/* El backend espera generalmente 'gastos' (no 'expensas') */}
+          
             <option value="gastos">Gastos</option>
           </select>
         </div>
