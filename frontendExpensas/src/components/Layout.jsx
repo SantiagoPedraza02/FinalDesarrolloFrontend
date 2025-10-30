@@ -16,7 +16,7 @@ const Layout = () => {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-6">
               <div className="text-xl font-bold">Gestor de Gastos</div>
-              <div className="hidden md:flex space-x-2">
+              <div className="flex space-x-2 overflow-x-auto md:overflow-visible">
                 <button
                   onClick={() => setCurrentPage('dashboard')}
                   className={`px-3 py-2 rounded ${currentPage === 'dashboard' ? 'bg-black text-white' : 'hover:bg-gray-200'}`}
