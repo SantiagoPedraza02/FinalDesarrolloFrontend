@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from 'react';
-import api from '../services/api.js';
+import api, { configureAuth } from '../services/api.js';
 
 const AuthContext = createContext(null);
 
@@ -44,6 +44,15 @@ export const AuthProvider = ({ children }) => {
     }
     return null;
   };
+
+  // Wire auth handlers so api.js can auto-refresh on 401
+  useEffect(() => {
+    configureAuth({
+      getToken: () => token,
+      tryRefresh,
+      logout
+    });
+  }, [token, tryRefresh, logout]);
 
   return (
     <AuthContext.Provider value={{ user, token, login, logout, tryRefresh }}>
