@@ -48,7 +48,7 @@ const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-3 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="seu@email.com"
+                placeholder="Nombre de usuario"
                 autoComplete="username"
                 required
               />
