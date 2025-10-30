@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://disciplined-smile-production.up.railway.app/api';
 
 const handleResponse = async (response) => {
   if (!response.ok) {
@@ -7,11 +7,17 @@ const handleResponse = async (response) => {
       const data = await response.json();
       detail = data?.detail || JSON.stringify(data);
     } catch (_) {}
-    throw new Error(detail);
+    throw new Error(`${response.status}: ${detail}`);
   }
-  // 204 no content
+
   if (response.status === 204) return null;
-  return response.json();
+
+  const contentType = response.headers.get('content-type');
+  if (contentType && contentType.includes('application/json')) {
+    return response.json();
+  }
+
+  return null;
 };
 
 const api = {
