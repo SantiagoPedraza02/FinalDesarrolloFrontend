@@ -1,4 +1,4 @@
-const API_URL = 'https://disciplined-smile-production.up.railway.app/api';
+const VITE_API_URL = 'https://disciplined-smile-production.up.railway.app/api';
 
 const handleResponse = async (response) => {
   if (!response.ok) {
@@ -23,7 +23,7 @@ const handleResponse = async (response) => {
 const api = {
 
   login: async (username, password) => {
-    const response = await fetch(`${API_URL}/token/`, {
+    const response = await fetch(`${VITE_API_URL}/token/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
@@ -31,7 +31,7 @@ const api = {
     return handleResponse(response);
   },
   refresh: async (refreshToken) => {
-    const response = await fetch(`${API_URL}/token/refresh/`, {
+    const response = await fetch(`${VITE_API_URL}/token/refresh/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ refresh: refreshToken })
@@ -40,13 +40,13 @@ const api = {
   },
 
   getCategories: async (token) => {
-    const response = await fetch(`${API_URL}/categorias/`, {
+    const response = await fetch(`${VITE_API_URL}/categorias/`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     return handleResponse(response);
   },
   createCategory: async (token, data) => {
-    const response = await fetch(`${API_URL}/categorias/`, {
+    const response = await fetch(`${VITE_API_URL}/categorias/`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -57,7 +57,7 @@ const api = {
     return handleResponse(response);
   },
   deleteCategory: async (token, id) => {
-    const response = await fetch(`${API_URL}/categorias/${id}/`, {
+    const response = await fetch(`${VITE_API_URL}/categorias/${id}/`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -65,14 +65,14 @@ const api = {
   },
   // Ingresos
   getIngresos: async (token, filters = '') => {
-    const response = await fetch(`${API_URL}/ingresos/${filters}`, {
+    const response = await fetch(`${VITE_API_URL}/ingresos/${filters}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     return handleResponse(response);
   },
 
   createIngreso: async (token, data) => {
-    const response = await fetch(`${API_URL}/ingresos/`, {
+    const response = await fetch(`${VITE_API_URL}/ingresos/`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -84,7 +84,7 @@ const api = {
   },
 
   deleteIngreso: async (token, id) => {
-    const response = await fetch(`${API_URL}/ingresos/${id}/`, {
+    const response = await fetch(`${VITE_API_URL}/ingresos/${id}/`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -93,14 +93,14 @@ const api = {
 
   // Expensas
   getExpensas: async (token, filters = '') => {
-    const response = await fetch(`${API_URL}/expensas/${filters}`, {
+    const response = await fetch(`${VITE_API_URL}/expensas/${filters}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     return handleResponse(response);
   },
 
   createExpensa: async (token, data) => {
-    const response = await fetch(`${API_URL}/expensas/`, {
+    const response = await fetch(`${VITE_API_URL}/expensas/`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -112,7 +112,7 @@ const api = {
   },
 
   deleteExpensa: async (token, id) => {
-    const response = await fetch(`${API_URL}/expensas/${id}/`, {
+    const response = await fetch(`${VITE_API_URL}/expensas/${id}/`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
